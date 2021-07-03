@@ -50,7 +50,7 @@
 				</tr>
 				<tr th:each="statusObj : ${userStatusList}">
 				<td th:text="${statusObj.statusBody}"></td>
-				<td th:text="${statusObj.privacyType}"></td>
+				<td th:text="${statusObj.privacyType==0} ? 'Public' : 'Private'"></td>
 				<td><a th:href="@{/status/view/{id}(id=${statusObj.id})}">View</a>
 					| <a th:href="@{/status/edit/{id}(id=${statusObj.id})}">Edit</a> | <a
 					th:href="@{/status/delete/{id}(id=${statusObj.id})}">Delete</a></td>

@@ -8,13 +8,14 @@ import org.hibernate.PersistentObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ariftravelagency.base.BaseService;
 import com.ariftravelagency.statusView.StatusViewEntity;
 import com.ariftravelagency.statusView.StatusViewService;
 import com.ariftravelagency.userRole.UserRolesService;
 
 @Service
 @Transactional
-public class UserService {
+public class UserService extends BaseService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -26,8 +27,8 @@ public class UserService {
 	private UserRolesService userRolesService;
 
 	public List<StatusViewEntity> statusListByUserId() {
-		Long userId = 1l;
-		return statusViewService.statusListByUserId(userId);
+		UserEntity userObj = getUserInof();
+		return statusViewService.statusListByUserId(userObj.getId());
 	}
 
 	public UserEntity findById(Long id) {

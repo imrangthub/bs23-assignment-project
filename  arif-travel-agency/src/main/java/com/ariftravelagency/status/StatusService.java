@@ -6,12 +6,15 @@ import org.hibernate.PersistentObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ariftravelagency.base.BaseService;
+import com.ariftravelagency.user.UserEntity;
+
 @Service
-public class StatusService {
+public class StatusService extends BaseService {
 
 	@Autowired
 	private StatusRepository statusRepository;
-	
+
 	public List<StatusEntity> list() {
 		return statusRepository.list();
 	}
@@ -20,11 +23,10 @@ public class StatusService {
 		return statusRepository.findById(id);
 	}
 
-
-
 	public String statusSave(StatusEntity obj) {
 		try {
-			obj.setUserId(1l);
+			UserEntity userObj = getUserInof();
+			obj.setUserId(userObj.getId());
 			statusRepository.save(obj);
 			return "User save successfully done !";
 		} catch (Exception ex) {
@@ -66,7 +68,5 @@ public class StatusService {
 			throw new PersistentObjectException(ex.getCause().toString());
 		}
 	}
-
-
 
 }
