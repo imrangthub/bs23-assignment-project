@@ -2,10 +2,8 @@ package com.ariftravelagency.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -34,15 +32,6 @@ public class MvcConfig implements WebMvcConfigurer {
 		// templateEngine.addDialect(new SpringSecurityDialect());
 		return templateEngine;
 	}
-//
-//	 @Bean
-//	 public SpringTemplateEngine templateEngine() {
-//	     SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//	     templateEngine.setTemplateResolver(templateResolver());
-//	     templateEngine.addDialect(new TilesDialect());
-//	     templateEngine.addDialect(new SpringSecurityDialect());
-//	     return templateEngine;
-//	 }
 
 	@Bean
 	private ITemplateResolver templateResolver() {
@@ -51,6 +40,5 @@ public class MvcConfig implements WebMvcConfigurer {
 		resolver.setTemplateMode("HTML5");
 		return resolver;
 	}
-
 
 }

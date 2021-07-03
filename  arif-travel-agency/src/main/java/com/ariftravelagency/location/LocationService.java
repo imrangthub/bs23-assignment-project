@@ -14,7 +14,5 @@ public class LocationService {
 	public List<LocationEntity> list() {
 		return repository.list();
 	}
-	
-	
 
 }

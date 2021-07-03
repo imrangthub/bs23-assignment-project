@@ -27,7 +27,7 @@ public class LocationEntity implements Serializable {
 	private Long id;
 
 	private String title;
-	
+
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private boolean isActive;
 

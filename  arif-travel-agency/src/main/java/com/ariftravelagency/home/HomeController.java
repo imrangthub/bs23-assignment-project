@@ -9,11 +9,10 @@ import com.ariftravelagency.statusView.StatusViewService;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private StatusViewService statusViewService;
-	
-	
+
 	@GetMapping("/home")
 	public String Home(Model model) {
 		model.addAttribute("statusList", statusViewService.getPublicStatusList());
@@ -25,8 +24,5 @@ public class HomeController {
 		model.addAttribute("statusList", statusViewService.getPublicStatusList());
 		return "home";
 	}
-	
-	
-	
 
 }

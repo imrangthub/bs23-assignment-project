@@ -14,6 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.stereotype.Component;
+
 import com.ariftravelagency.role.RoleEntity;
 import com.ariftravelagency.user.UserEntity;
 import com.ariftravelagency.user.UserService;
@@ -34,37 +35,23 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 		String userName = authentication.getName();
 		String password = authentication.getCredentials().toString();
-		
-		if(userName==null || password==null ) {
+		if (userName == null || password == null) {
 			return null;
 		}
 		UserEntity user = userService.findByUserName(userName);
-
 		List<RoleEntity> roles = user.getRoles();
-
-//		System.out.println("userName: " + userName);
-//		System.out.println("password: " + password);
-//		System.out.println("UserEntity" + user);
-//		System.out.println("roles" + roles);
-
 		if (user != null) {
 
 			if (passwordEncoder.matches(password, user.getPassword())) {
-
 				List<RoleEntity> userRoles = user.getRoles();
 				List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-
 				for (RoleEntity role : userRoles) {
 					authorities.add(new SimpleGrantedAuthority(role.getName().toString()));
 				}
-
 				return new UsernamePasswordAuthenticationToken(user.getUsername(), password, authorities);
 			}
-
 		}
-
 		return null;
-
 	}
 
 	@Override

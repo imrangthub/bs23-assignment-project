@@ -8,16 +8,12 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ariftravelagency.userRole.UserRoleEntity;
-
 @Repository
 public class UserRepository {
 
 	@Autowired
 	private EntityManager entityManager;
 
-//	@Autowired
-//	private UserRolesService userRolesService;
 
 	public UserEntity findById(Long id) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -38,7 +34,6 @@ public class UserRepository {
 			ex.printStackTrace();
 			return null;
 		}
-
 	}
 
 	public UserEntity findByUserName(String userName) {

@@ -20,18 +20,12 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-
 		String contextPath = request.getContextPath();
-		System.out.println("In Auth Success Handelr"); // You can log user info
-														// for keep logged user
-														// info;
-
+		System.out.println("In Auth Success Handelr"); // You can log user info for keep logged user
 		if (true) { // your condition will be here
-
 			response.sendRedirect(contextPath + "/user/home");
 			return;
 		}
-
 		response.sendRedirect(contextPath);
 	}
 

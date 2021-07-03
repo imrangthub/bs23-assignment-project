@@ -1,7 +1,7 @@
 package com.ariftravelagency.config;
 
-
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
-	private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationFailureHandler.class);	
+	private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationFailureHandler.class);
 
 	private String errorPage;
 
@@ -35,15 +35,11 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
-		AccessDeniedException accessDeniedException) 
-                throws IOException, ServletException {
+			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		String contextPath = request.getContextPath();
 		logger.error(accessDeniedException.toString());
-		
-		
-		System.out.println("AccessDenidedHandler");         //do some business logic, then redirect to errorPage url
-		
-		response.sendRedirect(contextPath+"/access-denied");
+		System.out.println("AccessDenidedHandler"); // do some business logic, then redirect to errorPage url
+		response.sendRedirect(contextPath + "/access-denied");
 
 	}
 
