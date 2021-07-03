@@ -13,11 +13,20 @@ public class HomeController {
 	@Autowired
 	private StatusViewService statusViewService;
 	
+	
+	@GetMapping("/home")
+	public String Home(Model model) {
+		model.addAttribute("statusList", statusViewService.getPublicStatusList());
+		return "home";
+	}
 
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("statusList", statusViewService.getPublicStatusList());
 		return "home";
 	}
+	
+	
+	
 
 }

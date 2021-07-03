@@ -27,21 +27,7 @@ public class UserController {
 		return "user/userCreate";
 	}
 
-	@GetMapping("/user/create")
-	public String create(Model model) {
-		UserEntity obj = new UserEntity();
-		model.addAttribute("userObj", obj);
-		return "user/userCreate";
-	}
 
-	@PostMapping("/user/save")
-	public String saveuser(UserEntity userObj, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			return "user/userCreate";
-		}
-		userService.userSave(userObj);
-		return "redirect:/user/home";
-	}
 
 
 	@GetMapping("/user/edit/{id}")
