@@ -5,7 +5,7 @@
 <title>Home | Arif Travel Agency</title>
 <link th:href="@{/bootstrap4/bootstrap.css}" rel="stylesheet" />
 </head>
-<body>
+<body data-new-gr-c-s-check-loaded="14.1018.0" data-gr-ext-installed="">
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -17,19 +17,20 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="navbar-brand" href="#"
-					th:href="@{/user-status/create}">User Registration</a></li>
-
+					th:href="@{/registration/create}">Sign Up</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="!isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/login}">Login</a></li>
-
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
+				<li class="nav-item"><a class="navbar-brand" href="#"
+					th:href="@{/user/home}">User Profile</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/logout}">Logout</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
 		</div>
 	</nav>
 	<br>
@@ -37,7 +38,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<h1>Login page</h1>
+				<br> <br>
+				<h4>Login page</h4>
 				<form th:action="@{/login}" method="post">
 					<div th:if="${param.error}">
 						<div class="alert alert-danger">Invalid username or
@@ -67,9 +69,6 @@
 				</form>
 			</div>
 		</div>
-
-
 	</div>
-
 </body>
 </html>

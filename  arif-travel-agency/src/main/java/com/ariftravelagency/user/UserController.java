@@ -17,6 +17,7 @@ public class UserController {
 	@GetMapping("/user/home")
 	public String index(Model model) {
 		model.addAttribute("userStatusList", userService.statusListByUserId());
+		model.addAttribute("currentUser", userService.getUserInof());
 		return "user/home";
 	}
 

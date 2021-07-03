@@ -17,52 +17,50 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="navbar-brand" href="#"
-					th:href="@{/user-status/create}">User Registration</a></li>
-
+					th:href="@{/registration/create}">Sign Up</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="!isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/login}">Login</a></li>
-
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
+				<li class="nav-item"><a class="navbar-brand" href="#"
+					th:href="@{/user/home}">User Profile</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/logout}">Logout</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
 		</div>
 	</nav>
-
 	<main role="main">
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
 				<h2>Post a Status</h2>
-				<a class="btn btn-lg btn-primary" href="/" role="button">Home
+				<a class="btn btn-lg btn-primary" href="/user/home" role="button">Home
 					&raquo;</a>
 			</div>
 		</div>
 		<div class="container">
-
 			<form action="#" th:action="@{/status/save}" th:object="${statusObj}"
 				method="post">
 				<div class="form-group">
-					<label for="email">Status:</label> <input class="form-control"
-						type="text" th:field="*{statusBody}" id="name" placeholder="Name">
+					<label for="email">Status:</label>
+					<textarea class="form-control" rows="6" th:field="*{statusBody}"
+						id="name" placeholder="What's on your mind ..."></textarea>
 				</div>
 				<div class="form-group">
 					<label for="pwd">Choose Privacy:</label>
 
 					<div>
-						<input type="radio" th:field="*{privacyType}" th:checked="${true}" th:value="0">
-						<label th:for="${#ids.prev('privacyType')}">Public</label>
+						<input type="radio" th:field="*{privacyType}" th:checked="${true}"
+							th:value="0"> <label th:for="${#ids.prev('privacyType')}">Public</label>
 					</div>
 					<div>
 						<input type="radio" th:field="*{privacyType}" th:value="1">
 						<label th:for="${#ids.prev('privacyType')}">Private</label>
 					</div>
-
-
 				</div>
 				<div class="form-group col-md-6">
 					<label for="description">Check In:</label>
@@ -75,14 +73,10 @@
 						</select>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">Post</button>
+				<button type="submit" class="btn btn-primary">Post Now</button>
 			</form>
-
-
 		</div>
 		<!-- /container -->
 	</main>
-	<footer class="container">
-	</footer>
 </body>
 </html>

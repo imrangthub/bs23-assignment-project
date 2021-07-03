@@ -18,46 +18,41 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/registration/create}">Sign Up</a></li>
-
-
 			</ul>
-
-			<ul class="my-2 my-lg-0">
+			<ul class="my-2 my-lg-0" sec:authorize="!isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/login}">Login</a></li>
-
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
+				<li class="nav-item"><a class="navbar-brand" href="#"
+					th:href="@{/user/home}">User Profile</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/logout}">Logout</a></li>
 			</ul>
-
 		</div>
 	</nav>
-
 	<main role="main">
-		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h2>Welcome to Arif Travel Agency</h2>
-				<a class="btn btn-lg btn-primary" href="/status/create"
+				<h4>Welcome to Arif Travel Agency</h4>
+				<a class="btn btn-lg btn-success" href="/status/create"
 					role="button">Add Status &raquo;</a>
 			</div>
 		</div>
 		<div class="container">
 			<!-- Example row of columns -->
 			<div class="row">
-				<div class="col-md-4" th:each="statusObj : ${statusList}">
-					<h2 th:text="${statusObj.fullName}"></h2>
+				<div class="col-md-12" th:each="statusObj : ${statusList}">
+					<h5 th:text="${statusObj.fullName}"></h5>
 					<p th:text="${statusObj.statusBody}">
-					at <p th:text="${statusObj.title}">
+					<p th:text="'at '+${statusObj.title}">
 				</div>
 			</div>
-
 			<hr>
-
 		</div>
 		<!-- /container -->
 	</main>
-	<footer class="container">
-	</footer>
 </body>
 </html>

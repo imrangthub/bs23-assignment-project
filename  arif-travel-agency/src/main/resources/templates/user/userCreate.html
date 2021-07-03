@@ -17,35 +17,31 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="navbar-brand" href="#"
-					th:href="@{/user-status/create}">User Registration</a></li>
-
+					th:href="@{/registration/create}">Sign Up</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="!isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/login}">Login</a></li>
-
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
+				<li class="nav-item"><a class="navbar-brand" href="#"
+					th:href="@{/user/home}">User Profile</a></li>
+			</ul>
+			<ul class="my-2 my-lg-0" sec:authorize="isAuthenticated()">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/logout}">Logout</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
 		</div>
 	</nav>
-
 	<main role="main">
-		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h2>Welcome to Arif Travel Agency</h2>
-				<a class="btn btn-lg btn-primary" href="/status/create"
-					role="button">Add Status &raquo;</a>
+				<h4>User Registration</h4>
 			</div>
 		</div>
 		<div class="container">
-
-			<form action="#" th:action="@{/registration/save}" th:object="${userObj}"
-				method="post">
+			<form action="#" th:action="@{/registration/save}"
+				th:object="${userObj}" method="post">
 				<div class="form-group">
 					<label for="username">User Name:</label> <input
 						class="form-control" type="text" th:field="*{username}"
@@ -63,11 +59,7 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
-
 		</div>
-		<!-- /container -->
 	</main>
-	<footer class="container">
-	</footer>
 </body>
 </html>
