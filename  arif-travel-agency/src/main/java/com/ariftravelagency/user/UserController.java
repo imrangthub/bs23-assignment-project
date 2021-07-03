@@ -14,6 +14,18 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@GetMapping("/user/home")
+	public String index(Model model) {
+		model.addAttribute("userStatusList", userService.statusListByUserId());
+		return "user/home";
+	}
+
+	@GetMapping("/user/status/create")
+	public String userStatus(Model model) {
+		UserEntity obj = new UserEntity();
+		model.addAttribute("userObj", obj);
+		return "user/userCreate";
+	}
 
 	@GetMapping("/user/create")
 	public String create(Model model) {
@@ -28,20 +40,9 @@ public class UserController {
 			return "user/userCreate";
 		}
 		userService.userSave(userObj);
-		return "redirect:/user/list";
+		return "redirect:/user/home";
 	}
 
-	@GetMapping("/user/view/{id}")
-	public String view(@PathVariable("id") long userId, Model model) {
-		UserEntity userObj = null;
-		try {
-			userObj = userService.findById(userId);
-		} catch (Exception ex) {
-			model.addAttribute("errorMessage", "user not found");
-		}
-		model.addAttribute("userObj", userObj);
-		return "user/userView";
-	}
 
 	@GetMapping("/user/edit/{id}")
 	public String eidt(Model model, @PathVariable("id") Long userId) {
@@ -54,13 +55,9 @@ public class UserController {
 		if (!result.hasErrors()) {
 			userService.userUpdate(userObj);
 		}
-		return "redirect:/user/list";
+		return "redirect:/user/home";
 	}
 
-	@GetMapping("/user/delete/{id}")
-	public String userDelete(Model model, @PathVariable("id") Long id) {
-		userService.userDelete(id);
-		return "redirect:/user/list";
-	}
+
 
 }

@@ -1,4 +1,4 @@
-package com.ariftravelagency.userStatus;
+package com.ariftravelagency.status;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import lombok.ToString;
 public class StatusEntity  implements Serializable {
 
 
-	private static final long serialVersionUID = 5167955767935040554L;
+	private static final long serialVersionUID = 51679557935040554L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,15 +37,10 @@ public class StatusEntity  implements Serializable {
 
 	private Integer privacyType;
 
-	
 	private Long locationId;
 	
-	private String locationName;
-	
-	
 	private Long userId;
-	
-	private String userName;
+
 
 	
 

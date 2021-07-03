@@ -17,19 +17,19 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="navbar-brand" href="#"
-					th:href="@{/user-status/create}">User Registration</a></li>
+					th:href="@{/user/create}">Sign Up</a></li>
 
+
+			</ul>
+
+			<ul class="my-2 my-lg-0">
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/login}">Login</a></li>
 
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/logout}">Logout</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
+
 		</div>
 	</nav>
 
@@ -45,38 +45,11 @@
 		<div class="container">
 			<!-- Example row of columns -->
 			<div class="row">
-				<div class="col-md-4">
-					<h2>Heading</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</p>
+				<div class="col-md-4" th:each="statusObj : ${statusList}">
+					<h2 th:text="${statusObj.fullName}"></h2>
+					<p th:text="${statusObj.statusBody}">
 					<p>
-						<a class="btn btn-secondary" href="#" role="button">View
-							details »</a>
-					</p>
-				</div>
-				<div class="col-md-4">
-					<h2>Heading</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</p>
-					<p>
-						<a class="btn btn-secondary" href="#" role="button">View
-							details »</a>
-					</p>
-				</div>
-				<div class="col-md-4">
-					<h2>Heading</h2>
-					<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-						condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-					<p>
-						<a class="btn btn-secondary" href="#" role="button">View
-							details »</a>
-					</p>
+					<p th:text="${statusObj.title}">
 				</div>
 			</div>
 
@@ -86,7 +59,7 @@
 		<!-- /container -->
 	</main>
 	<footer class="container">
-		<p>© Company 2017-2018</p>
+		<p>Arif Travel Agency 2017-2021</p>
 	</footer>
 </body>
 </html>

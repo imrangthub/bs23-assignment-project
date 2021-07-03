@@ -38,13 +38,45 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h2>Post a Status</h2>
-				<a class="btn btn-lg btn-primary" href="/"
-					role="button">Home &raquo;</a>
+				<a class="btn btn-lg btn-primary" href="/" role="button">Home
+					&raquo;</a>
 			</div>
 		</div>
 		<div class="container">
-			
 
+
+			<form action="#" th:action="@{/status/update}"
+				th:object="${statusObj}" method="post">
+				<div class="form-group">
+					<label for="email">Status:</label> <input class="form-control"
+						type="text" th:field="*{statusBody}" id="name" placeholder="Name">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Choose Privacy:</label>
+
+					<div>
+						<input type="radio" th:field="*{privacyType}"  th:value="0">
+						<label th:for="${#ids.prev('privacyType')}">Public</label>
+					</div>
+					<div>
+						<input type="radio" th:field="*{privacyType}" th:value="1">
+						<label th:for="${#ids.prev('privacyType')}">Private</label>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="description">Check In:</label>
+
+					<div th:object="${locationList}">
+						<select data-style="btn-info" class="form-control" id="locationId"
+							name="locationId">
+							<option th:each="locationObj : ${locationList}"
+								th:value="${locationObj.id}" th:text="${locationObj.title}"></option>
+						</select>
+					</div>
+				</div>
+				<input type="hidden" th:field="*{id}" id="id">
+				<button type="submit" class="btn btn-primary">Update Post</button>
+			</form>
 
 
 		</div>

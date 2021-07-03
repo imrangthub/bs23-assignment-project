@@ -1,4 +1,4 @@
-package com.ariftravelagency.userStatus;
+package com.ariftravelagency.status;
 
 import java.util.List;
 
@@ -17,14 +17,13 @@ public class StatusRepository {
 
 	@Autowired
 	private EntityManager entityManager;
-	
 
-    public List<StatusEntity> list() {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<StatusEntity> criteria = builder.createQuery( StatusEntity.class );
-        Root<StatusEntity> root = criteria.from(StatusEntity.class);
-        return entityManager.createQuery(criteria).getResultList();
-    }
+	public List<StatusEntity> list() {
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<StatusEntity> criteria = builder.createQuery(StatusEntity.class);
+		Root<StatusEntity> root = criteria.from(StatusEntity.class);
+		return entityManager.createQuery(criteria).getResultList();
+	}
 
 	public StatusEntity findById(Long id) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -33,6 +32,21 @@ public class StatusRepository {
 		criteria.select(root).where(builder.equal(root.get("id"), id));
 		return entityManager.createQuery(criteria).getSingleResult();
 	}
+
+	public StatusEntity findByIdObj(Long id) {
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<StatusEntity> criteria = builder.createQuery(StatusEntity.class);
+		Root<StatusEntity> root = criteria.from(StatusEntity.class);
+		criteria.select(root).where(builder.equal(root.get("id"), id));
+		try {
+			return entityManager.createQuery(criteria).getSingleResult();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
 
 
 	public Boolean save(StatusEntity obj) {

@@ -37,38 +37,53 @@
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h2>Welcome to Arif Travel Agency</h2>
-				<a class="btn btn-lg btn-primary" href="/status/create"
-					role="button">Add Status &raquo;</a>
+				<h2>Post a Status</h2>
+				<a class="btn btn-lg btn-primary" href="/" role="button">Home
+					&raquo;</a>
 			</div>
 		</div>
 		<div class="container">
 
-			<form action="#" th:action="@{/user/save}" th:object="${userObj}"
+			<form action="#" th:action="@{/status/save}" th:object="${statusObj}"
 				method="post">
 				<div class="form-group">
-					<label for="username">User Name:</label> <input
-						class="form-control" type="text" th:field="*{username}"
-						id="username" placeholder="User Name">
+					<label for="email">Status:</label> <input class="form-control"
+						type="text" th:field="*{statusBody}" id="name" placeholder="Name">
 				</div>
 				<div class="form-group">
-					<label for="fullName">Full Name:</label> <input
-						class="form-control" type="text" th:field="*{fullName}"
-						id="fullName" placeholder="Full Name">
+					<label for="pwd">Choose Privacy:</label>
+
+					<div>
+						<input type="radio" th:field="*{privacyType}" th:checked="${true}" th:value="0">
+						<label th:for="${#ids.prev('privacyType')}">Public</label>
+					</div>
+					<div>
+						<input type="radio" th:field="*{privacyType}" th:value="1">
+						<label th:for="${#ids.prev('privacyType')}">Private</label>
+					</div>
+
+
 				</div>
-				<div class="form-group">
-					<label for="password">Password:</label> <input class="form-control"
-						type="password" th:field="*{password}" id="password"
-						placeholder="User Name">
+				<div class="form-group col-md-6">
+					<label for="description">Check In:</label>
+
+					<div th:object="${locationList}">
+						<select data-style="btn-info" class="form-control" id="locationId"
+							name="locationId">
+							<option th:each="locationObj : ${locationList}"
+								th:value="${locationObj.id}" th:text="${locationObj.title}"></option>
+						</select>
+					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Post</button>
 			</form>
+
 
 		</div>
 		<!-- /container -->
 	</main>
 	<footer class="container">
-		<p>© Company 2017-2018</p>
+		<p>© Company 2021</p>
 	</footer>
 </body>
 </html>

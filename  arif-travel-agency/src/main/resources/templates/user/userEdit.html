@@ -5,7 +5,7 @@
 <title>Home | Arif Travel Agency</title>
 <link th:href="@{/bootstrap4/bootstrap.css}" rel="stylesheet" />
 </head>
-<body>
+<body data-new-gr-c-s-check-loaded="14.1018.0" data-gr-ext-installed="">
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -17,7 +17,7 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="navbar-brand" href="#"
-					th:href="@{/user/create}">User Registration</a></li>
+					th:href="@{/user-status/create}">User Registration</a></li>
 
 				<li class="nav-item"><a class="navbar-brand" href="#"
 					th:href="@{/login}">Login</a></li>
@@ -32,6 +32,7 @@
 			</form>
 		</div>
 	</nav>
+
 	<main role="main">
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
@@ -42,20 +43,33 @@
 			</div>
 		</div>
 		<div class="container">
-			<table class="table">
-				<tr>
-					<th>Status Body</th>
-					<th>Privacy</th>
-					<th>Action</th>
-				</tr>
-				<tr th:each="statusObj : ${userStatusList}">
-				<td th:text="${statusObj.statusBody}"></td>
-				<td th:text="${statusObj.privacyType}"></td>
-				<td><a th:href="@{/status/view/{id}(id=${statusObj.id})}">View</a>
-					| <a th:href="@{/status/edit/{id}(id=${statusObj.id})}">Edit</a> | <a
-					th:href="@{/status/delete/{id}(id=${statusObj.id})}">Delete</a></td>
-			</tr>
-			</table>
+
+			<form action="#" th:action="@{/user/update}" th:object="${userObj}"
+				method="post">
+				<div class="form-group">
+					<label for="email">User Name:</label> <input class="form-control"
+						type="text" th:field="*{username}" id="name"
+						placeholder="User Name">
+				</div>
+				<div class="form-group">
+					<label for="fullName">Full Name:</label> <input
+						class="form-control" type="text" th:field="*{fullName}"
+						id="fullName" placeholder="Full Name">
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label> <input class="form-control"
+						type="password" th:field="*{password}" id="password"
+						placeholder="User Name">
+				</div>
+				<input type="hidden" th:field="*{id}" id="id">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
 		</div>
+		<!-- /container -->
+	</main>
+	<footer class="container">
+		<p>© Company 2017-2018</p>
+	</footer>
 </body>
 </html>

@@ -1,22 +1,23 @@
 package com.ariftravelagency.user;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ariftravelagency.userRole.UserRoleEntity;
+
 @Repository
-@Transactional
 public class UserRepository {
 
 	@Autowired
 	private EntityManager entityManager;
+
+//	@Autowired
+//	private UserRolesService userRolesService;
 
 	public UserEntity findById(Long id) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -47,7 +48,6 @@ public class UserRepository {
 		criteria.select(root).where(builder.equal(root.get("username"), userName));
 		return entityManager.createQuery(criteria).getSingleResult();
 	}
-
 
 	public Boolean save(UserEntity obj) {
 		try {
