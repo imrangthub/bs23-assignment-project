@@ -1,5 +1,6 @@
+USE arif_travel_agencydb;
 -- Insert Role init data
-INSERT INTO roles_tbl (`id`, `description`, `is_deleted`, `name`) VALUES ('99999990', 'Role for User', '0', 'ROLE_USER');
+INSERT INTO `arif_travel_agencydb`.roles_tbl (`id`, `description`, `is_deleted`, `name`) VALUES ('99999990', 'Role for User', '0', 'ROLE_USER');
 
 -- Insert Location init data
 INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('99999999', '1', 'Sylhet');
