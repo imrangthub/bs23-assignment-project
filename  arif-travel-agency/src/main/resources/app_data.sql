@@ -1,17 +1,13 @@
-INSERT INTO roles_tbl (`id`, `description`, `is_deleted`, `name`) VALUES ('1', 'Role for User', '0', 'ROLE_USER');
-INSERT INTO roles_tbl (`id`, `description`, `is_deleted`, `name`) VALUES ('2', 'Role for Admin', '0', 'ROLE_ADMIN');
-INSERT INTO roles_tbl (`id`, `description`, `is_deleted`, `name`) VALUES ('3', 'Role for Super Admin', '0', 'SUPER_ADMIN');
+-- Insert Role init data
+INSERT INTO roles_tbl (`id`, `description`, `is_deleted`, `name`) VALUES ('99999990', 'Role for User', '0', 'ROLE_USER');
 
+-- Insert Location init data
+INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('99999999', '1', 'Sylhet');
+INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('99999998', '1', 'Bandarban');
+INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('99999997', '1', 'Khulna');
 
-INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('1', '1', 'Sylhet');
-INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('2', '1', 'Bandarban');
-INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('3', '1', 'Khulna');
-INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('4', '0', 'Chattogram');
-
-
-INSERT INTO `arif_travel_agencydb`.users_tbl (`id`, `full_name`, `password`, `username`) VALUES ('1', 'MD Imran Hossain', '12345', 'imran');
-
-
+-- Create Status View
+DROP TABLE IF EXISTS `arif_travel_agencydb`.STATUS_VIEW;
 DROP VIEW IF EXISTS `arif_travel_agencydb`.STATUS_VIEW;
 CREATE VIEW STATUS_VIEW AS
     SELECT st.id,st.status_body,st.privacy_type,st.location_id,st.user_id,

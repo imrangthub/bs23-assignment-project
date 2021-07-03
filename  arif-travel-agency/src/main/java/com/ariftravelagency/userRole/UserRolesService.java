@@ -17,7 +17,7 @@ public class UserRolesService {
 	public String addUserRole(Long userId ) {
 		UserRoleEntity userRoleObj = new UserRoleEntity();
 		userRoleObj.setUserId(userId);
-		userRoleObj.setRoleId(1l);
+		userRoleObj.setRoleId(99999990l);
 		userRoleObj.setDeleted(false);
 		try {
 			repository.save(userRoleObj);
