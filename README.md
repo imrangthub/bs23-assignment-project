@@ -75,7 +75,29 @@ Docker Image:
 https://hub.docker.com/repository/docker/imranmadbar/arif-travel-agency-app
 
 
+# Application Screenshot
+
+Home Page:
 
 ![image](https://user-images.githubusercontent.com/32607915/124375039-b5184e80-dcc1-11eb-82da-64883a255afd.png)
+
+User Registration:
+
+![image](https://user-images.githubusercontent.com/32607915/124375077-f6a8f980-dcc1-11eb-9590-07d31e1b0aa1.png)
+
+User Login:
+
+![image](https://user-images.githubusercontent.com/32607915/124375088-06284280-dcc2-11eb-8d4d-8c2423a1b2f2.png)
+
+User Dashboard:
+
+![image](https://user-images.githubusercontent.com/32607915/124375100-1b9d6c80-dcc2-11eb-96c4-1f620b104f84.png)
+
+
+Create Status:
+
+![image](https://user-images.githubusercontent.com/32607915/124375112-29eb8880-dcc2-11eb-896f-8846ab7d2e1c.png)
+
+
 
 
