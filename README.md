@@ -36,9 +36,9 @@
         INSERT INTO `arif_travel_agencydb`.location_tbl (`id`, `is_active`, `title`) VALUES ('99999997', '1', 'Khulna');
 
         -- Create Status View
-        DROP TABLE IF EXISTS `arif_travel_agencydb`.STATUS_VIEW;
-        DROP VIEW IF EXISTS `arif_travel_agencydb`.STATUS_VIEW;
-        CREATE VIEW STATUS_VIEW AS
+        DROP TABLE IF EXISTS `arif_travel_agencydb`.status_view;
+        DROP VIEW IF EXISTS `arif_travel_agencydb`.status_view;
+        CREATE VIEW status_view AS
             SELECT st.id,st.status_body,st.privacy_type,st.location_id,st.user_id,
             us.full_name, lc.title
         FROM 
