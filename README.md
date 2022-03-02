@@ -64,22 +64,22 @@
 
 2)Build image 
 
-                =>docker image build -t imranmadbar/arif-travel-agency-app:1.0.0.RELEASE . 
+                =>docker image build -t imranmadbar/arif-travel-agency-app
                 
 or 
 Get get image from https://hub.docker.com/
 
 3) Run the application
 
-                =>docker run --name arif-travel-agency-app --link mysqlschema:mysqlschema -t -p 8080:8080 imranmadbar/arif-travel-agency-app:1.0.0.RELEASE
-                =>docker run --name arif-travel-agency-app --link mysqlschema:mysqlschema -e MYSQL_HOST=mysqlschema -t -p 8080:8080 imranmadbar/arif-travel-agency-app:1.0.0.RELEASE
+                =>docker run --name arif-travel-agency-app --link mysqlschema:mysqlschema -t -p 8080:8080 imranmadbar/arif-travel-agency-app
+                =>docker run --name arif-travel-agency-app --link mysqlschema:mysqlschema -e MYSQL_HOST=mysqlschema -t -p 8080:8080 imranmadbar/arif-travel-agency-app
 
 
 4) After runing application import app_data.sql
 
 Docker Image:
 
-https://hub.docker.com/repository/docker/imranmadbar/arif-travel-agency-app:1.0.0.RELEASE
+https://hub.docker.com/repository/docker/imranmadbar/arif-travel-agency-app
 
 
 # Application Screenshot
