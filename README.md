@@ -52,7 +52,10 @@
 # Note that: 
   This SQL must be run properly after MySQL server and Application running completed, Otherwise, the application cannot work properly.
   -------------------------------------------------------------------------------------------------------------------------------------
+#App
 
+      =>java -jar -DMYSQL_HOST=127.0.0.1 arif-travel-agency-0.0.1-SNAPSHOT.jar
+      
 #Docker
 
 1) Run a mysql docker image as
