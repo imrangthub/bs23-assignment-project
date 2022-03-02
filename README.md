@@ -54,29 +54,32 @@
   -------------------------------------------------------------------------------------------------------------------------------------
 #App
 
-      =>java -jar -DMYSQL_HOST=127.0.0.1 arif-travel-agency-0.0.1-SNAPSHOT.jar
+               =>java -jar -DMYSQL_HOST=127.0.0.1 arif-travel-agency-0.0.1-SNAPSHOT.jar
       
 #Docker
 
 1) Run a mysql docker image as
 
-=>docker run -d -p 3333:3306 --name=arif_travel_agencydb --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_DATABASE=arif_travel_agencydb" -it mysql:5.7.18
+                =>docker run -d -p 3306:3306 --name=mysqlschema --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_DATABASE=arif_travel_agencydb" -it mysql:5.7.18
 
 2)Build image 
 
-=>docker image build -t imranmadbar/arif-travel-agency-app .
+                =>docker image build -t imranmadbar/arif-travel-agency-app:1.0.0.RELEASE . 
+                
 or 
-Get get image from 
+Get get image from https://hub.docker.com/
 
 3) Run the application
 
-=>docker run --name arif-travel-agency-app -t --link arif_travel_agencydb:arif_travel_agencydb -p 8080:8080 imranmadbar/arif-travel-agency-app
+                =>docker run --name arif-travel-agency-app --link mysqlschema:mysqlschema -t -p 8080:8080 imranmadbar/arif-travel-agency-app:1.0.0.RELEASE
+                =>docker run --name arif-travel-agency-app --link mysqlschema:mysqlschema -e MYSQL_HOST=mysqlschema -t -p 8080:8080 imranmadbar/arif-travel-agency-app:1.0.0.RELEASE
+
 
 4) After runing application import app_data.sql
 
 Docker Image:
 
-https://hub.docker.com/repository/docker/imranmadbar/arif-travel-agency-app
+https://hub.docker.com/repository/docker/imranmadbar/arif-travel-agency-app:1.0.0.RELEASE
 
 
 # Application Screenshot
