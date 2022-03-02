@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  mysqlschema:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: arif_travel_agencydb
+      MYSQL_USER: imran
+      MYSQL_PASSWORD: madbar
+    ports:
+      - "3333:3306"
+    networks:
+      - arif-travel-agency-net
+  arif-travel-agency-app:
+    depends_on:
+      - mysqlschema
+    image: imranmadbar/arif-travel-agency-app
+    ports:
+      - "8282:8080"
+    restart: always
+    environment:
+      MYSQL_HOST: mysqlschema
+    networks:
+      - arif-travel-agency-net
+volumes:
+  db_data: {}
+networks:
+  arif-travel-agency-net:
+    name: arif-travel-agency-net
+    driver: bridge
